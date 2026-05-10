@@ -1,0 +1,21 @@
+{ config, pkgs, ...}:
+
+{
+programs.neovim.enable = true;
+programs.neovim.defaultEditor = true;
+#programs.neovim.configure = {
+#  customRC = ''
+#    " here your custom VimScript configuration goes!
+#  '';
+#  customLuaRC = ''
+#    -- here your custom Lua configuration goes!
+#  '';
+#  packages.myVimPackage = with pkgs.vimPlugins; {
+    # loaded on launch
+#    start = [ LazyVim ];
+    # manually loadable by calling `:packadd $plugin-name`
+#    opt = [ pkgs.vimPlugins.LazyVim];
+
+#};
+}
+

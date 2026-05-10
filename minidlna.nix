@@ -1,0 +1,3 @@
+{
+services.mediatomb.enable = true;
+}
