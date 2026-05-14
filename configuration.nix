@@ -19,7 +19,8 @@
 #      ./tlp.nix
 #      ./samba.nix
       ./gvfs.nix
-#      ./flatpak.nix
+      ./flatpak.nix
+      ./doas.nix
 #      ./fonts.nix
     ];
 
@@ -30,6 +31,8 @@
   boot.zswap.enable = true;
 
   networking.hostName = "nixos"; # Define your hostname.
+  virtualisation.libvirtd.enable = true;
+
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -111,7 +114,7 @@
   users.users.void = {
     isNormalUser = true;
     description = "void";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "transmission" "libvirtd" ];
     packages = with pkgs; [
     #  thunderbird
     ];
@@ -132,7 +135,7 @@
   #programs.steam.enable = true;
   #programs.noctalia-shell.enable = true;
 
-  services.flatpak.enable = true;
+#  services.flatpak.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -163,14 +166,18 @@
 )
 
   noctalia-shell
+  doas-sudo-shim
   wtype
   vlc
+  qemu
+  virt-manager
   file-roller
   steam-run-free
   openal-soft
   geeqie
   vimPlugins.LazyVim
   gcc
+  tldr
   cargo
   rustc
   freecad

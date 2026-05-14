@@ -1,13 +1,11 @@
-{
-services.flatpak = {
-  enable = true;
+{ config, pkgs, ...}:
 
-  overrides = {
-    global = {
-      Context.filesystems = [
-        "/nix/store:ro"
-      ];
-    };
+{
+  services.flatpak.enable = true;
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gnome
+    ];
   };
-};
 }
